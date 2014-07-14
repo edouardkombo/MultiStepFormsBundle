@@ -81,6 +81,30 @@ class MultiStepFormsHelper
     public function getFormatedRole($role)
     {
         return (string) 'ROLE_' . strtoupper($role);
+    }
+    
+    /**
+     * Increment a value
+     * 
+     * @param integer $value Value to increment
+     * 
+     * @return integer
+     */
+    public function increment($value)
+    {
+        return (integer) $value + 1;
+    }
+    
+    /**
+     * Decrement a value
+     * 
+     * @param integer $value Value to decrement
+     * 
+     * @return integer
+     */
+    public function decrement($value)
+    {
+        return (integer) $value - 1;
     }    
 
     /**

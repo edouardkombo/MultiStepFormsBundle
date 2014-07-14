@@ -42,7 +42,7 @@ class MultiStepFormsController extends Controller
         $role   = (string)  $this->getRequest()->get('user_role');
         $step   = (integer) $this->getRequest()->get('step');
         
-        $currentStep    = $step - 1;
+        $currentStep    = $helper->decrement($step);
         $formated_role  = $helper->getFormatedRole($role);
         $entity         = (object) $helper->getCurrentUserIfSpecified();       
         $formType       = (string) $config['forms_order'][$currentStep];
@@ -72,7 +72,7 @@ class MultiStepFormsController extends Controller
         $helper         = (object)  $this->get('multistep_forms.helper');
         $config         = (array)   $helper->getConfiguration();
         $step           = (integer) $this->getRequest()->get('step');
-        $currentStep    = $step - 1;
+        $currentStep    = $helper->decrement($step);
         
         $entity = (object) $helper->getCurrentUserIfSpecified();
         $form   = (object) $this->createForm(
@@ -101,8 +101,8 @@ class MultiStepFormsController extends Controller
     public function createAction($helper, $config, $form, $entity, $step)
     {
         $role           = (string)  $this->getRequest()->get('user_role');      
-        $nextStep       = $step + 1;
-        $currentStep    = $step - 1;
+        $nextStep       = $helper->increment($step);
+        $currentStep    = $helper->decrement($step);
         
         if (isset($config['authentication_trigger'])) {         
             $entity = $helper->saveAndLogUserCommand($form, $currentStep, $role,
