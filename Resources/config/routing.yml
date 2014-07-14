@@ -1,0 +1,13 @@
+edouard_kombo_multi_step_forms_show:
+    path:     /show/{user_role}/{step}
+    defaults: { _controller: EdouardKomboMultiStepFormsBundle:MultiStepForms:index, user_role: 'manager'}
+    requirements: 
+        step: \d+
+        user_role: "[a-zA-Z]+"
+    
+edouard_kombo_multi_step_forms_create:
+    path:     /create/{user_role}/{step}
+    defaults: { _controller: EdouardKomboMultiStepFormsBundle:MultiStepForms:save }
+    requirements: 
+        _method: POST
+        user_role: "[a-zA-Z]+"

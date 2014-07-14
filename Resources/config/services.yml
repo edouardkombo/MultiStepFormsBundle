@@ -1,0 +1,22 @@
+parameters:
+    multistep_forms.login_listener.class: EdouardKombo\MultiStepFormsBundle\Listener\LoginListener
+    multistep_forms.controller.class: EdouardKombo\MultiStepFormsBundle\Controller\MultiStepFormsController
+    multistep_forms.helper.class: EdouardKombo\MultiStepFormsBundle\Helper\MultiStepFormsHelper
+
+services:
+    multistep_forms.helper:
+        class: %multistep_forms.helper.class%
+        arguments:
+            - %multistep_forms.user_registration%
+            - @security.context
+            - @service_container
+        
+    multistep_forms.login_listener:
+        class: %multistep_forms.login_listener.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @service_container
+            - @security.context
+            
+    multistep_forms.controller:
+        class: %multistep_forms.controller.class%

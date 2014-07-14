@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="span6 offset3 block">
+    <div class="block-content">
+        
+        <div>
+
+            <form action="{{ path(action_url, { 'user_role': user_role, 'step': step }) }}" method="post" {{ form_enctype(form) }}>
+                {{ form_widget(form) }}
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+            
+        </div>
+
+    </div>
+  </div>
+</div>     
+{% endblock %}
