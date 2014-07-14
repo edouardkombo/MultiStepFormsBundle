@@ -1,0 +1,27 @@
+{
+    "name": "edouardkombo/multi-step-forms-bundle",
+    "type": "bundle",
+    "description": "Easily manage Symfony2 forms with multiple steps logic.",
+    "keywords": ["Multistep forms","Symfony2 multistep forms","Edoaurd Kombo"],
+    "homepage": "https://github.com/edouardkombo/MultiStepFormsBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Edouard Kombo",
+            "email": "edouard.kombo@gmail.com",
+            "homepage": "http://creativcoders.wordpress.com",
+            "role": "Architect / Developer"
+        }
+    ],    
+    "require": {
+        "php": ">=5.3.0",
+        "friendsofsymfony/user-bundle": "2.0.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "EdoaurdKombo\\MultiStepFormsBundle\\": ""
+        }
+    },
+    "target-dir":"EdouardKombo/MultiStepFormsBundle",      
+    "minimum-stability": "dev"    
+}
