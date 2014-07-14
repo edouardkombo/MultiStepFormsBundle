@@ -148,7 +148,6 @@ class LoginListener
 
                 $this->securityContext->setToken($token);
 
-                //$request = $this->get("request");
                 $event = new InteractiveLoginEvent($request, $token);
                 return $this->container->get("event_dispatcher")->dispatch(
                     "security.interactive_login", 
