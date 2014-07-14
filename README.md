@@ -126,9 +126,11 @@ Make sure to target a single template view in your bundle.
     - {step}: current step, depending on the configurations
 
 Define your global route in app/config/routing.yml
+
     frontend_multistep_registration:
         resource: "@VendorUserBundle/Resources/config/routing/multistep_registration.xml"
         prefix:   /{_locale}/registration/step
+
 
 In your multistep_registration.xml
     
