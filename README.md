@@ -125,26 +125,27 @@ Make sure to target a single template view in your bundle.
     - {user_role}: is the role you want the user to be registered (it has no incidence for other forms but is mandatory).
     - {step}: current step, depending on the configurations
 
-    Define your global route in app/config/routing.yml
-        frontend_multistep_registration:
-            resource: "@VendorUserBundle/Resources/config/routing/multistep_registration.xml"
-            prefix:   /{_locale}/registration/step
+Define your global route in app/config/routing.yml
+    frontend_multistep_registration:
+        resource: "@VendorUserBundle/Resources/config/routing/multistep_registration.xml"
+        prefix:   /{_locale}/registration/step
 
-    In your multistep_registration.xml
-        <route id="frontend_multistep_registration_show" pattern="/show/{user_role}/{step}">
-            <default key="_controller">VendorUserBundle:UserStepRegistration:index</default>
-            <default key="user_role">manager</default>
-            <requirement key="step">\d+</requirement>
-            <requirement key="user_role">[a-zA-Z]+</requirement>         
-        </route> 
+In your multistep_registration.xml
+    
+    <route id="frontend_multistep_registration_show" pattern="/show/{user_role}/{step}">
+        <default key="_controller">VendorUserBundle:UserStepRegistration:index</default>
+        <default key="user_role">manager</default>
+        <requirement key="step">\d+</requirement>
+        <requirement key="user_role">[a-zA-Z]+</requirement>         
+    </route> 
 
-        <route id="frontend_multistep_registration_create" pattern="/create/{user_role}/{step}">
-            <default key="_controller">VendorUserBundle:UserStepRegistration:save</default>
-            <default key="user_role">manager</default>
-            <requirement key="_method">POST</requirement>
-            <requirement key="step">\d+</requirement>
-            <requirement key="user_role">[a-zA-Z]+</requirement>        
-        </route>        
+    <route id="frontend_multistep_registration_create" pattern="/create/{user_role}/{step}">
+        <default key="_controller">VendorUserBundle:UserStepRegistration:save</default>
+        <default key="user_role">manager</default>
+        <requirement key="_method">POST</requirement>
+        <requirement key="step">\d+</requirement>
+        <requirement key="user_role">[a-zA-Z]+</requirement>        
+    </route>        
 
  6. Change the bundle configs in app/config/congif.yml and that's ok, you're ready to go.
 
