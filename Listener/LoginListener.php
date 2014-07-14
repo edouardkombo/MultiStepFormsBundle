@@ -69,9 +69,9 @@ class LoginListener
     /**
      * Constructor
      * 
-     * @param \Doctrine\ORM\EntityManager $em
-     * @param object                      $container Container Object
-     * @param SecurityContext             $securityContext Manage security
+     * @param \Doctrine\ORM\EntityManager $em              Doctrine ORM
+     * @param object                      $container       Container Object
+     * @param SecurityContext             $securityContext Security management
      * 
      * @return \EdouardKombo\MultiStepFormsBundle\Listener\LoginListener
      */
