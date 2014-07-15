@@ -8,7 +8,10 @@
         
         <div>
 
+            
             <form action="{{ path(action_url, { 'user_role': user_role, 'step': step }) }}" method="post" {{ form_enctype(form) }}>
+                {{ form_errors(form) }}
+                
                 {{ form_widget(form) }}
 
                 <div class="form-actions">

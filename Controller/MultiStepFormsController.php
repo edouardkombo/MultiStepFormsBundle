@@ -72,19 +72,26 @@ class MultiStepFormsController extends Controller
         $helper         = (object)  $this->get('multistep_forms.helper');
         $config         = (array)   $helper->getConfiguration();
         $step           = (integer) $this->getRequest()->get('step');
+        $role           = (string)  $this->getRequest()->get('user_role'); 
         $currentStep    = $helper->decrement($step);
         
         $entity = (object) $helper->getCurrentUserIfSpecified();
-        $form   = (object) $this->createForm(
-                new $config['forms_order'][$currentStep](),
-                $entity
-        );
+        $form   = (object) $this->createForm(new $config['forms_order'][$currentStep](), $entity );
         
         $form->bind($this->getRequest());
         
         if ($form->isValid()) {      
-            return $this->createAction($helper, $config, $form, $entity, $step);
+            $this->createAction($helper, $config, $form, $entity, $step, $role);   
         }
+            
+        return $this->container->get('templating')->renderResponse(
+            'EdouardKomboMultiStepFormsBundle:Registration:step.html.twig', array(
+                'action_url'    => $config['actions_order'][$currentStep],
+                'step'          => $step,
+                'user_role'     => $role,
+                'form'          => $form->createView()
+            )
+        );             
     }
     
     /**
@@ -95,12 +102,12 @@ class MultiStepFormsController extends Controller
      * @param object  $form     Form objects
      * @param object  $entity   Entity object
      * @param integer $step     Current step
+     * @param string  $role     User role
      * 
      * @return object
      */
-    public function createAction($helper, $config, $form, $entity, $step)
-    {
-        $role           = (string)  $this->getRequest()->get('user_role');      
+    public function createAction($helper, $config, $form, $entity, $step, $role)
+    {      
         $nextStep       = $helper->increment($step);
         $currentStep    = $helper->decrement($step);
         
